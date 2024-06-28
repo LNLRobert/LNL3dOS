@@ -3,6 +3,7 @@ firmware repo for LNL3d Klipper Units
 
 TODO
 ## steppers.cfgs
+```
 - possibly address steppers if needed
 Identified steppers thus far
 x
@@ -13,6 +14,9 @@ z
 42hd2037-01
 extruder
 42hd2037-1
+```
+
+## add idependent idex configurations for each type of printer?
 
 ## independent heater/fans cfgs
 

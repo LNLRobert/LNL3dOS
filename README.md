@@ -27,6 +27,8 @@ extruder
 #gcode:
 #SET_PIN PIN=ps_on VALUE=0
 
+
+```
 #[filament_switch_sensor my_sensor]
 #pause_on_runout: True
 #   When set to True, a PAUSE will execute immediately after a runout
@@ -56,3 +58,4 @@ extruder
 #switch_pin: PA15
 #   The pin on which the switch is connected. This parameter must be
 #   provided.
+```

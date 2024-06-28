@@ -1,0 +1,6 @@
+#ignore all zip files
+*.zip
+*.7z
+
+#ignore backups
+*.bkp

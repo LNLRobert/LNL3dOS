@@ -1,7 +1,22 @@
 # LNL3dOS
 firmware repo for LNL3d Klipper Units
 
+known issues:
+firmware restart can create loop in which mcu continuously times out (mega2560), machine would need to be power cycled
+removing restart_method: command from MCU seems to have solved the issue
+
 TODO
+## add instructions on initial setup
+ie: board and printer model need to be un-commented
+
+## add customs / some sort of file or section for customized parameters, ie horizontal_move_z, extruder nozzle size, etc
+
+## add 
+8bit
+sensor type heater bed missing
+MCU header may need to be lumped into just paths
+fix euclid probe reference error -> [probe euclid] is invalid, needs to just be [probe]
+
 ## steppers.cfgs
 ```
 - possibly address steppers if needed

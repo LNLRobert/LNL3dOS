@@ -18,11 +18,23 @@ MCU header may need to be lumped into just paths
 fix euclid probe reference error -> [probe euclid] is invalid, needs to just be [probe]
 
 ## steppers.cfgs
+https://learn.watterott.com/silentstepstick/comparison/
+d3s are running 2208 stepper drivers, RMS max is 1.2a, supports 256 microsteps
+motor voltage supply of 3-5 (logic), 5.5-35v motor supply
+70-80% of stpper driver max RMS is 0.84-0.96, may use 0.9a
+starting with 40-50% puts driver amps at ~0.6
+goal amperage of
 ```
 - possibly address steppers if needed
 Identified steppers thus far
-x
+x on d6
 42hd6021-03
+
+x on d3
+42HD4027-01[https://www.crcibernetica.com/nema-17-stepper-motor-42hd4027-01-a/]
+1.5amp motor, 1.2a driver
+start amp tests at 0.48-0.6, target maximum of 0.84 (70%), never to exceed 0.92(80%)
+
 y
 42hd6021-03
 z

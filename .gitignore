@@ -4,3 +4,6 @@
 
 #ignore backups
 *.bkp
+
+#ignore vs-code codespace
+*.code-workspace

@@ -11,3 +11,7 @@ update_lnl_os()
     TARGER_DIR="/home/biqu/printer_3_data"
     cp SOURCE_DIR TARGET_DIR
 }
+
+
+# exit script if any errors
+update_lnl_os

@@ -7,8 +7,8 @@ report_status()
 update_lnl_os()
 {
     report_status "Updating LNLOS"
-    SOURCE_DIR="/home/biqu/LNL3dOS"
-    TARGER_DIR="/home/biqu/printer_3_data"
+    SOURCE_DIR="~/LNL3dOS"
+    TARGER_DIR="~/printer_3_data"
     sudo cp SOURCE_DIR TARGET_DIR
 }
 

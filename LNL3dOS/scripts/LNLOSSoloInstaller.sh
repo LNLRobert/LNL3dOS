@@ -100,7 +100,7 @@ process_solo_directory()
         report_status "klippy UDS line value set to: $klippy_uds_line_value"
 
         # set moonraker install path value for the update manager
-        moonraker_update_manager_path_value="path: $PRINTER_DATA_DIR"
+        moonraker_update_manager_path_value="path: $PRINTER_DATA_DIR/LNL3dOS"
         report_status "moonraker update manager path value to be set to: $moonraker_update_manager_path"
 
 

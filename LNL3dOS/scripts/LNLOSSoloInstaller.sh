@@ -17,6 +17,9 @@ KLIPPY_UDS_SEARCH_PATTERN="/home/biqu/{printer_data_path}/comms/klippy.sock"
 KLIPPY_PORT_SEARCH_PATTERN="port: {klippy_port}"
 VARIABLES_LOCATION_SEARCH_PATTERN="filename: ~/{printer_data_path}/config/variables.cfg"
 SERIAL_ADDRESS_SEARCH_PATTERN="serial: {serial_port}"
+#moonraker LNLOS UpdatePath
+MOONRAKER_UPDATE_MANAGER_PATH_PATTERN="path: {LNLOS_INSTALL_PATH}"
+
 #mcu serial prefix
 MCU_SERIAL_PREFIX="serial: "
 #rear upper usb port
@@ -25,6 +28,8 @@ PRINTER_1_MCU_SERIAL_PATH="/dev/serial/by-path/platform-5200000.usb-usb-0:1.2:1.
 PRINTER_2_MCU_SERIAL_PATH="/dev/serial/by-path/platform-5200000.usb-usb-0:1.3:1.0-port0"
 #right side usb port
 PRINTER_3_MCU_SERIAL_PATH="/dev/serial/by-path/platform-5200000.usb-usb-0:1.4:1.0-port0"
+
+
 
 
 # Get the full path of the directory where this script resides
@@ -94,6 +99,11 @@ process_solo_directory()
         klippy_uds_line_value="$PRINTER_DATA_DIR/comms/klippy.sock"
         report_status "klippy UDS line value set to: $klippy_uds_line_value"
 
+        # set moonraker install path value for the update manager
+        moonraker_update_manager_path_value="path: $PRINTER_DATA_DIR"
+        report_status "moonraker update manager path value to be set to: $moonraker_update_manager_path"
+
+
 
 
         # set klippy port value based on printer subdirectory value, printer_1=7125, printer_2=7126, printer_3=7127
@@ -148,6 +158,9 @@ process_solo_directory()
             # replace line for klippy uds address
             sed -i "s|$KLIPPY_UDS_SEARCH_PATTERN|$klippy_uds_line_value|" "$moonraker_conf_file_path"
             report_status "Updated '$moonraker_conf_file_path with new UDS Address: $klippy_uds_line_value"
+            # replace line for moonraker update manager for lnl3dos
+            sed -i "s|$MOONRAKER_UPDATE_MANAGER_PATH_PATTERN|$moonraker_update_manager_path_value|" "$moonraker_conf_file_path"
+            report_status "Updated '$moonraker_conf_file_path LNLOS path entry with $moonraker_update_manager_path_value"
         else
             report_status "Warning: '$MOONRAKER_TARGET_FILE' not found in $printer_data_config_directory"
         fi

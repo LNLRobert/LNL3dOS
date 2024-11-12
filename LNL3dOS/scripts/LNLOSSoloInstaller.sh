@@ -10,6 +10,7 @@ PRINTER_DATA_EXCLUSION_PATTERN="kiauh-backups"
 SD_CARD_TARGET_FILE="paths.cfg"
 PRINTER_CFG_TARGET_FILE="printer.cfg"
 MOONRAKER_TARGET_FILE="moonraker.conf"
+SHELL_MACRO_TARGET_FILE="shellmacros.cfg"
 
 # search queries for lines to be updated
 VIRTUAL_SD_CARD_SEARCH_PATTERN="path: ~/{printer_data_path}/gcodes"
@@ -19,6 +20,8 @@ VARIABLES_LOCATION_SEARCH_PATTERN="filename: ~/{printer_data_path}/config/variab
 SERIAL_ADDRESS_SEARCH_PATTERN="serial: {serial_port}"
 #moonraker LNLOS UpdatePath
 MOONRAKER_UPDATE_MANAGER_PATH_PATTERN="path: {LNLOS_INSTALL_PATH}"
+#shell macro path 
+LNLOS_SHELL_MACRO_INSTALLER_PATTERN="command: /home/biqu/{printer_data_subdir}/LNL3dOS/LNL3dOS/scripts/LNLOSSoloInstaller.sh"
 
 #mcu serial prefix
 MCU_SERIAL_PREFIX="serial: "
@@ -45,6 +48,8 @@ PRINTER_DATA_SUBDIR=$(basename "$PRINTER_DATA_DIR")
 SOURCE_DIR="$PRINTER_DATA_DIR/LNL3dOS"
 # target config directory
 CONFIG_DIR="$PRINTER_DATA_DIR/config"
+# target shell macro directory
+SCRIPTS_DIR="$CONFIG_DIR/LNL3dOS/scripts"
 
 report_status()
 {
@@ -102,6 +107,11 @@ process_solo_directory()
         # set moonraker install path value for the update manager
         moonraker_update_manager_path_value="path: $PRINTER_DATA_DIR/LNL3dOS"
         report_status "moonraker update manager path value to be set to: $moonraker_update_manager_path"
+
+        # set installer path for LNLOS shell command
+        shell_macro_target_file_path="$SCRIPTS_DIR/$SHELL_MACRO_TARGET_FILE"
+        lnlos_installer_path_value="command: /home/biqu/$PRINTER_DATA_SUBDIR/LNL3dOS/LNL3dOS/scripts/$SHELL_MACRO_TARGET_FILE"
+        report_status "lnlos updater path value to be set to: $lnlos_installer_path_value"
 
 
 
@@ -173,6 +183,16 @@ process_solo_directory()
         else
             report_status "Warning: '$PRINTER_CFG_TARGET_FILE' not found in $printer_data_config_directory"
         fi
+
+        if [[ -f "$shell_macro_target_file_path" ]]; then
+            sed -i "s|$LNLOS_SHELL_MACRO_INSTALLER_PATTERN|$lnlos_installer_path_value|" "$shell_macro_target_file_path"
+            report_status "Updated $shell_macro_target_file_path with new shell command path: $lnlos_installer_path_value"
+        else
+            report_status "Warning: '$lnlos_installer_path' not found"
+        fi
+
+
+
 	fi
 }
 

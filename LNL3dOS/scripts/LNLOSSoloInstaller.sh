@@ -11,6 +11,7 @@ SD_CARD_TARGET_FILE="paths.cfg"
 PRINTER_CFG_TARGET_FILE="printer.cfg"
 MOONRAKER_TARGET_FILE="moonraker.conf"
 SHELL_MACRO_TARGET_FILE="shellmacros.cfg"
+INSTALLER_TARGET_FILE="LNLOSSoloInstaller.sh"
 
 # search queries for lines to be updated
 VIRTUAL_SD_CARD_SEARCH_PATTERN="path: ~/{printer_data_path}/gcodes"
@@ -110,7 +111,7 @@ process_solo_directory()
 
         # set installer path for LNLOS shell command
         shell_macro_target_file_path="$SCRIPTS_DIR/$SHELL_MACRO_TARGET_FILE"
-        lnlos_installer_path_value="command: /home/biqu/$PRINTER_DATA_SUBDIR/LNL3dOS/LNL3dOS/scripts/$SHELL_MACRO_TARGET_FILE"
+        lnlos_installer_path_value="command: /home/biqu/$PRINTER_DATA_SUBDIR/LNL3dOS/LNL3dOS/scripts/$INSTALLER_TARGET_FILE"
         report_status "lnlos updater path value to be set to: $lnlos_installer_path_value"
 
 

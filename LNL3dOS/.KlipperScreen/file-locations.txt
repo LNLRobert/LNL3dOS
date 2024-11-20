@@ -1,3 +1,5 @@
 defaults.conf located at ~biqu/KlipperScreen/ks_includes/defaults.conf
 zcalibrate.py located at ~biqu/KlipperScreen/panels/zcalibrate.py
 extrude.py ~biqu/KlipperScreen/panels/extrude.py
+move.py ~biqu/KlipperScreen/panels/move.py
+base_panel.py ~biqu/KlipperScreen/panels/base_panel.py
